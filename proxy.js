@@ -27,24 +27,14 @@
 var util = require('util'),
     colors = require('colors'),
     http = require('http'),
-    httpProxy = require('../../lib/node-http-proxy');
+    httpProxy = require('http-proxy');
 
 //
 // Http Proxy Server with Proxy Table
 //
 httpProxy.createServer({
   router: {
-    'finalsclub.org': 'localhost:80'
-    'karmanotes.org': 'localhost:3000'
+    'finalsclub.org': 'localhost:3001'
+    , 'karmanotes.org': 'localhost:3000'
   }
 }).listen(80);
-
-//
-// Target Http Server
-//
-http.createServer(function (req, res) {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.write('request successfully proxied to: ' + req.url + '\n' + JSON.stringify(req.headers, true, 2));
-  res.end();
-}).listen(80);
-
