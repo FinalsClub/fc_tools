@@ -21,9 +21,9 @@ based upon the following stack:
 |	App.(n)     |	   App.(n)     |  etc..  |
 |                   |                  |         |
  ------------------------------------------------
-|						 |
-|	Node.Js (express, connect, etc..)	 |
-| 						 |
+|		      |				 |
+|	Node.Js       |     django / python      |
+| 		      |				 |
  ------------------------------------------------
 |						 |
 |	    GNU/Linux (ubuntu / Debian )	 |
@@ -42,9 +42,10 @@ start off with a generic GNU/Linux stack with:
 * Monit (optional, but recommended for basic monitoring).
 * Dev. Tools: gcc, git, curl, make 
 * Node Modules for each app. / service
+* Nginx 1.18 Web Server
 
 While the previous is an extensive list, it is not everything. See
-what is included with ubuntu-server 11.10+ for other tools are are
+what is included with ubuntu-server 11.10+ for other tools are
 on our servers.
 
 Middle Node.js:
@@ -53,16 +54,25 @@ Middle Node.js:
 Node.js is a new system for writing and deploying web applications
 that are able to scale and update user information in real time. We
 used Node.js because it is a new technology that is in its infancy, but
-is becoming commonly used in the development of new web applications and tools. Etherpad-lite (Collaborative editor used in Finalsclub.org)
-is one of the many components in our many services that are written in Node.Js
+is becoming commonly used in the development of new web applications and tools. 
+Etherpad-lite (Collaborative editor used in Finalsclub.org) is one of the many 
+components in our many services that are written in Node.Js.
+
+
+Middle Django / Python:
+--------------------------------------
+Karma Notes http://karmanotes.org is written using the django web framework
+and uses uWSGI + Nginx to provide resources. Nginx was used instead of Apache
+because of Apache's age and security shortcomings. 
+
 
 Top: App.(n)...
 --------------------------------------
-Most if not all web applications are written in Node.js. This makes
-managing and deploying services a lot easier. As of March 2012, we
-have:
-	* Karma Notes
+Some of our apps / services are written for node.js
+	
 	* Finals Club.org
+	* Node HTTP proxy (for routing traffic around the server).
+
 
 III. Deployment:
 --------------------------------------
@@ -82,7 +92,7 @@ Creating a special user and home for services allows server admins.
 to track the activity of services and can prevent damage to the system
 if the App. / service is compromised.
 
-3. git checkout devel
+3. git checkout devel # In FinalsClub src. Root.
 
 4. git submodule init && git submodule update
 
