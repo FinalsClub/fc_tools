@@ -1,0 +1,25 @@
+upstream django {
+    server         127.0.0.1:8000;
+}
+
+server {
+	server_name www.karmanotes.org karmanotes.org;
+
+	location /static/admin/ {
+               root /usr/local/lib/python2.7/dist-packages/django/contrib/admin;
+       }
+
+       location /static/ {
+               root /var/www/djKarma;
+       }
+
+        location / {
+                proxy_pass         http://django;
+                proxy_redirect     off;
+                proxy_set_header   Host             $host;
+                proxy_set_header   X-Real-IP        $remote_addr;
+                proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
+        }
+
+
+}
