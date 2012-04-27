@@ -1,5 +1,14 @@
-Finals Club Services Deployment Documentation V. 0.4
+Finals Club Services Deployment Documentation V. 0.8a
 =============================================
+I. Introduction
+II. Basic Model
+III. Deployment
+    a. Finals Club
+    b. Karma Notes
+IV. Backup / Management
+
+
+
 
 I. Introduction
 --------------------------------------
@@ -43,6 +52,8 @@ start off with a generic GNU/Linux stack with:
 * Dev. Tools: gcc, git, curl, make 
 * Node Modules for each app. / service
 * Nginx 1.18 Web Server
+* Django-1.4
+* PostgreSQL-1.9+
 
 While the previous is an extensive list, it is not everything. See
 what is included with ubuntu-server 11.10+ for other tools are
@@ -77,6 +88,9 @@ Some of our apps / services are written for node.js
 III. Deployment:
 --------------------------------------
 
+a. Finals Club
+----------------------
+
 Deployment is fairly straight forward.
 
 1. install git, curl, npm, node.js, mongodb-server, gcc, g++
@@ -103,7 +117,15 @@ reflect the configuration of your environment.
  account), you should be able to run "sudo start&" as the user that
 was created.
 
+
+b. Karma Notes
+----------------------
+
+
 If the previous documentation seems off or out of date, please email:
+
+IV. Backup / Management
+--------------------------------------
 
 Bob@finalsclub.org FCF System Administrator.
 
