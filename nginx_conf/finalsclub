@@ -1,0 +1,12 @@
+server {
+
+         server_name  www.finalsclub.org finalsclub.org;
+
+         access_log  /var/www/log/finalsclub.access.log;
+         error_log  /var/www/log/finalsclub.error.log;
+
+           location / {
+               proxy_pass http://localhost:9000 ;
+           }
+
+}
