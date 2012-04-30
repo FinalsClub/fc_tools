@@ -28,6 +28,7 @@ TMP_DIR=/tmp/fc_bkup_stage
 PKG_NAME=knotes-$DATE.tar.gz
 TARGET_FILE=$TMP_DIR/djkarma-$DATE.sql
 POSTGRES_DB= #DB_NAME_HERE!!!!!
+POSTGRES_USR= #DB_USERNAME HERE!
 
 # Future Script will me 100% generic.
 
@@ -43,7 +44,8 @@ copy_content() {
 
 postgres_dump_db() {
 	echo "Dumpling database...."
-	pg_dump -U $POSTGRES_DB karmanotes -f $TARGET_FILE
+	cd $TMP_DIR
+	pg_dump -U $POSTGRES_USR $POSTGRES_DB karmanotes -f $TARGET_FILE
 }
 
 mongodb_dump_db() {
