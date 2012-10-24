@@ -28,8 +28,8 @@ TMP_DIR=/tmp/fc_bkup_stage
 PKG_NAME=knotes-$DATE.tar.gz
 TARGET_FILE=$TMP_DIR/djkarma-$DATE.sql
 export PGPASSWORD=Beard0
-export AWS_ACCESS_KEY_ID=AKIAIPJWII4LERI4ES5Q
-export AWS_SECRET_ACCESS_KEY=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
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
 
 
 # Future Script will me 100% generic.

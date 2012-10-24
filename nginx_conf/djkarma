@@ -1,20 +1,27 @@
-upstream django {
-    server         127.0.0.1:8000;
+upstream django-beta	 {
+    server         127.0.0.1:7000;
 }
 
 server {
-	server_name www.karmanotes.org karmanotes.org;
-
+	server_name tmp.karmanotes.org ;
+	client_max_body_size 20M;
 	location /static/admin/ {
                root /usr/local/lib/python2.7/dist-packages/django/contrib/admin;
        }
+       
+       location /library/ {
+               alias /var/www/djkarma/;
+       }
 
        location /static/ {
-               root /var/www/djKarma;
+              # root /var/www/djkarma;
+	      # dbro changed this 8.3.2012
+	      # want to collect all static files to separate dir
+	      alias /var/www/beta/static/;
        }
 
         location / {
-                proxy_pass         http://django;
+                proxy_pass         http://django-beta;
                 proxy_redirect     off;
                 proxy_set_header   Host             $host;
                 proxy_set_header   X-Real-IP        $remote_addr;
